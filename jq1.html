@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>jQuery对象转化成DOM对象</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+	<div>元素一</div>
+	<div>元素二</div>
+	<div>元素三</div>
+	<input type="checkbox" id="cr" /><label for="cr">我已阅读上面的制度。</label>
+    
+    <script type="text/javascript">
+		var $div = $('div'); //jQuery对象
+		var div = $div.get(0);//通过get方法，转化成DOM对象
+		div.style.color = 'red'; //操作dom对象的属性
+
+		$(document).ready(function() {
+			var $cr = $("#cr");
+			var cr = $cr[0];
+			$cr.click(function() {
+				if (cr.checked) {
+					alert("感谢您的支持，您可以继续操作!");
+				}
+			})
+		})
+    </script>  
+</body>
+
+</html>
