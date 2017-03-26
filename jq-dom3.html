@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登陆页面demo</title>
+	<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+</head>
+<body>
+	<input type="text" id="address" value="请输入您的邮箱地址"> <br></br>
+	<input type="text" id="password" value="请输入您的登陆密码"> <br></br>
+	<input type="button" value="登陆">
+
+	<script>
+		$(function() {
+			$("#address").focus(function() {
+				var ads = $(this).val();
+				if (ads == "请输入您的邮箱地址") {
+					$(this).val("");
+				}
+			});
+			$("#address").blur(function() {
+				var ads = $(this).val();
+				if (ads == "") {
+					$(this).val("请输入您的邮箱地址");
+				}
+			})
+			$("#password").focus(function() {
+				var pas = $(this).val();
+				if (pas == "请输入您的登陆密码") {
+					$(this).val("");
+				}
+			});
+			$("#password").blur(function() {
+				var pas = $(this).val();
+				if (pas == "") {
+					$(this).val("请输入您的登陆密码");
+				}
+			})
+		});
+	</script>
+</body>
+</html>
