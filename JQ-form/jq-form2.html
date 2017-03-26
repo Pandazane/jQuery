@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>多行文本框的应用-高度变化</title>
+	<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+	<style type="text/css" media="screen">
+		.comment, .bigger, .small {
+			border:1px solid #fcc;
+		}
+		.focus {
+			background: #fcc;
+			cursor:pointer;
+		}
+		.titles span { margin:0 2px; cursor:pointer; }
+		/* 增加文字评论框的样式 */
+        .comment textarea {
+        	width:300px; height:80px;height:100px;border:1px solid #000;
+        }
+	</style>
+</head>
+<body>
+	<form action=" " method="POST" accept-charset="utf-8">
+	    <div class="comment">
+	    	<div class="titles">
+				<span class="bigger">放大</span>
+				<span class="small">缩小</span>
+			</div>
+			<div class="msg">
+				<textarea id="comments" name="msg" rows="8" cols="20">多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。多行文本框高度变化。</textarea>
+			</div>
+	    </div>
+	</form>
+
+	<script>
+		$(function () {
+			var $comment = $("#comments");
+			$("div .titles span").click(function() {
+				$(this).addClass("focus")
+				       .siblings().removeClass("focus");
+			});
+		    $(".bigger").click(function() {
+		    	if (!$comment.is('animated')) {
+		    		if ($comment.height() < 500) {
+		    			$comment.animate({height: "+=50"}, 400);
+		    		}
+		    	}
+		    });
+		    $(".small").click(function() {
+		    	if (!$comment.is('animated')) {
+		    		if ($comment.height() > 50) {
+		    			$comment.animate({height: "-=50"}, 400);
+		    		}
+		    	}
+		    });
+		});
+	</script>
+</body>
+</html>
