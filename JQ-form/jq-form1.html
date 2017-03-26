@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单行文本框的应用</title>
+	<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+	<style type="text/css" media="screen">
+		.focus {
+			border:1px solid #f00;
+			background: #fcc;
+		}
+	</style>
+</head>
+<body>
+	<form action="#" method="POST" accept-charset="utf-8">
+		<fieldset>
+			<legend>个人基本信息</legend>
+		<div>
+			<label for="name">名称：</label>
+			<input type="text" name="text" value="名称">
+		</div>
+        <div>
+			<label>密码：</label>
+			<input type="password" name="password" value="密码">
+		</div>
+		<div>
+			<label for="msg">详细信息：</label>
+            <textarea name="msg">详细信息</textarea>
+		</div>
+		</fieldset>
+	</form>
+
+	<script>
+	$(function() {
+		$("div :input").focus(function() {
+			$(this).addClass('focus');
+			if($(this).val() == this.defaultValue) {
+               $(this).val("");
+			}
+		}).blur(function() {
+			$(this).removeClass('focus');
+			if($(this).val() == "") {
+               $(this).val(this.defaultValue);
+			}
+		});
+	})
+	</script>
+</body>
+</html>
