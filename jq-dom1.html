@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>查找节点</title>
+	<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+</head>
+<body>
+	<p title="选择你最喜欢的水果">你最喜欢的水果是？</p>
+	<ul>
+		<li title="苹果">苹果</li>
+		<li title="橘子">橘子</li>
+		<li title="香蕉">香蕉</li>
+	</ul>
+
+	<script>
+		//查找元素节点
+		var $li = $("ul li:eq(1)");
+        var li_txt = $li.text();
+        alert(li_txt);
+        //查找属性节点
+        var $para = $("p");
+        var p_txt = $para.attr("title");
+        alert(p_txt);
+	</script>
+</body>
+</html>
