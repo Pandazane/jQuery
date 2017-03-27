@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复选框的应用2</title>
+	<script src="http://code.jquery.com/jquery-1.7.1.js"></script>
+</head>
+<body>
+	<form action="#" method="post" accept-charset="utf-8">
+		你爱好的运动是？
+		<input type="checkbox" id="checkAll">全选/全不选</br>	
+		<input type="checkbox" name="items" value="足球">足球		
+		<input type="checkbox" name="items" value="篮球">篮球		
+		<input type="checkbox" name="items" value="羽毛求">羽毛求		
+		<input type="checkbox" name="items" value="乒乓球">乒乓球</br>	
+		<input type="button" id="send" value="提 交">
+	</form>
+    
+    <script>
+        $(function() {
+        	 $("#checkAll").click(function() {
+				if(this.checked) {  //如果当前点击的多选框被选中,用的js原生DOM方法
+					$('[name=items]:checkbox').prop("checked", true );
+				}else {								
+				    $('[name=items]:checkbox').prop("checked", false );
+				}
+		    });
+        	$('[name=items]:checkbox').click(function() {
+    			var flag = true;
+    			$('[name=items]:checkbox').each(function() {
+    				if (!this.checked) {
+    					flag = false;
+    				}
+    			});
+    			$('#checkAll').prop('checked', flag);
+    		});
+    	    $('#send').click(function() {
+    	    	var che = "你的选择是： \r\n";
+    	    	$('[name=items]:checkbox:checked').each(function() {
+    	    		che += $(this).val() +"\r\n";
+    	    	});
+    	    	alert(che);
+    	    });  
+        })
+    </script>
+</body>
+</html>
