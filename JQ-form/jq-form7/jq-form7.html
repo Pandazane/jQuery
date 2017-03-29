@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证应用</title>
+	<style type="text/css" media="screen">
+		body { 
+			font:12px/19px Arial, Helvetica, sans-serif; 
+			color:#666;
+		}
+		form  div { 
+			margin:5px 0;
+		}
+		.int label {
+			float:left; 
+			width:100px; 
+			text-align:right;
+		}
+		.int input { 
+			padding:1px 1px; 
+			border:1px solid #ccc;
+			height:16px;
+		}
+		.sub { 
+			padding-left:100px;
+		}
+		.sub input { 
+			margin-right:10px; 
+		}
+		.formtips {
+			width: 200px;
+			margin:2px;
+			padding:2px;
+		}
+		.onError {
+		    background:#FFE0E9 url(../jq-form7/img/reg3.gif) no-repeat 0 center;
+			padding-left:25px;
+		}
+		.onSuccess {
+		    background:#E9FBEB url(../jq-form7/img/reg4.gif) no-repeat 0 center;
+			padding-left:25px;
+		}
+		.high{
+		    color:red;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.7.1.js"></script>
+</head>
+<body>
+	<form action="#" method="post" accept-charset="utf-8">
+		<fieldset>
+			<legend>用户注册</legend>
+			<div class="int">
+				<label for="usename">用户名：</label>
+				<input type="text" id="usename" class="required">
+			</div>
+			<div class="int">
+				<label for="usename">邮箱：</label>
+				<input type="text" id="email" class="required">
+			</div>
+			<div class="int">
+				<label for="text">备注：</label>
+				<input type="text" id="pstext" class="required">
+			</div>
+			<div class="sub">
+				<input type="submit" id="submit" value="提交">
+				<input type="reset" id="reset" value="重置">
+			</div>
+		</fieldset>
+	</form>
+
+	<script>
+	    $(function() {
+	    	//必填项，用*标识出来
+	    	$("form :input.required").each(function() {
+			var $req = $("<strong class='high'>*</strong>");
+			$(this).parent().append($req);
+		});
+	    	$("form :input").blur(function() {
+	    		var $parent = $(this).parent();
+	    		$parent.find('.formtips').remove();
+	    		//验证用户名
+	    		if ($(this).is("#usename")) {
+	    			if (this.value == "" || this.value.length < 6) {
+	    				var errorMsg = "请输入至少为6位的用户名.";
+	    				$parent.append("<span class='formtips onError'>"+errorMsg+"</span>");
+	    			} else {
+	    				var okMsg = "输入正确.";
+	    				$parent.append("<span class='formtips onSuccess'>"+okMsg+"</span>");
+	    			}
+	    		}
+	    		//验证邮箱
+	    		if ($(this).is("#email")) {
+	    			if (this.value == "" || (this.value != "" && !/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value))) {
+	    				var errorMsg = "请输入正确的邮箱地址.";
+	    				$parent.append("<span class='formtips onError'>"+errorMsg+"</span>");
+	    			} else {
+	    				var okMsg = "输入正确.";
+	    				$parent.append("<span class='formtips onSuccess'>"+okMsg+"</span>");
+	    			}
+	    		}
+	    	}).keyup(function() {
+	    		$(this).triggerHandler('blur');
+	    	}).focus(function() {
+	    		$(this).triggerHandler('blur');
+	    	});
+	    	//提交，最终验证。
+	    	$("#submit").click(function() {
+	    			$("form .required:input").trigger('blur');
+	    			var numError = $("form .onError").length;
+	    			if (numError) {
+	    				return false;
+	    			}
+	    			alert("注册成功，密码已发送至注册邮箱，请查收。");
+	    		});
+	    	//重置
+			 $('#reset').click(function() {
+					$(".formtips").remove(); 
+			 });
+	    });	
+	</script>
+</body>
+</html>
