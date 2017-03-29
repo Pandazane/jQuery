@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>表格变色应用1</title>
+	<style type="text/css" media="screen">
+		table { 
+			border:0;
+			border-collapse:collapse;
+		}
+		td { 
+			font:normal 12px/17px Arial;
+			padding:2px;
+			width:100px;
+		}
+		th { 
+			font:bold 12px/17px Arial;
+			text-align:left;padding:4px;
+			border-bottom:1px solid #333;
+		}
+		.even { 
+			background:#FFF38F;
+			}  /* 偶数行样式*/
+		.odd { 
+			background:#FFFFEE;
+			}  /* 奇数行样式*/
+		.selected { 
+			background:#FF6500;
+			color:#fff;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.7.1.js"></script>
+</head>
+<body>
+	<table>
+		<caption>人员基本信息表</caption>
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>暂住地</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>张山</td>
+				<td>男</td>
+				<td>浙江宁波</td>
+			</tr>
+			<tr>
+				<td>李四</td>
+				<td>女</td>
+				<td>山东青岛</td>
+			</tr>
+			<tr>
+				<td>王五</td>
+				<td>男</td>
+				<td>上海</td>
+			</tr>
+			<tr>
+				<td>赵六</td>
+				<td>男</td>
+				<td>湖南长沙</td>
+			</tr>
+			<tr>
+				<td>Rain</td>
+				<td>男</td>
+				<td>浙江杭州</td>
+			</tr>
+			<tr>
+				<td>MaxWoman</td>
+				<td>女</td>
+				<td>浙江温州</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<script>
+        //隔行变色
+		$(function() {
+			$('tbody>tr:odd').addClass('odd');
+			$('tbody>tr:even').addClass('even');
+		//高亮显示
+			$("tr:contains('王五')").addClass('selected');
+		})
+	</script>
+</body>
+</html>
