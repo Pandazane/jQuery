@@ -96,6 +96,7 @@
 				   .find(':radio').attr('checked',true);
         });
         //如果单选框默认情况下是选择的，则高色.
+        $('tbody>tr:has(:checked)').addClass('selected');
 		})
 	</script>
 </body>
