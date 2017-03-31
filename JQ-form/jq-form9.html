@@ -86,7 +86,7 @@
 			$('tr.parent').click(function() {
 				$(this).toggleClass('selected')
 				       .siblings('.child_'+this.id).toggle();
-			});
+			}).click();//默认为收缩
 		})
 	</script>
 </body>
