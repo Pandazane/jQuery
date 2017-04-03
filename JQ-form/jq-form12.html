@@ -70,9 +70,13 @@
 			$tabm.click(function() {
 				$(this).addClass('selected')
 				       .siblings().removeClass('selected');
-				var index = $tabm.index(this);
+				var index = $tabm.index(this);//获取当前单击的<li>元素在全部<li>元素中的索引
 				$("div.tab_box > div").eq(index).show()
 				                      .siblings().hide();
+			}).hover(function() {
+				$(this).addClass('hover');
+			}, function() {
+				$(this).removeClass('hover');
 			});
 		})
 	</script>
